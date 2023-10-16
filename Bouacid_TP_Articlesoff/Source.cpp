@@ -9,5 +9,9 @@ int main()
 {
 	//
 	cout << "Utilisation des classes en C++ :" << endl;
-	
+	Gestion gestion;
+	IHM logiciel;
+	logiciel.Start(&gestion);
+	//
+	return 0;
 }
