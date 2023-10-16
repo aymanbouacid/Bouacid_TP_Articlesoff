@@ -131,7 +131,7 @@ void IHM::Afficher(Article* article)
 void IHM::AfficherTout()
 {
 	cout << "     **********  Affichage  ********** " << endl;
-	// On affiche tous les objets crees
+	// On affiche tous les objets crées
 	for (int j = 0; j < gestion->getTaille(); j++)
 	{
 		Article* article = gestion->LireAt(j);

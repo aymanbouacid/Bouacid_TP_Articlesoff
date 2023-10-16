@@ -21,7 +21,7 @@ Gestion::~Gestion()
 		ListArticle->pop_back();
 	}
 
-	// On libere la memoire du Vector
+	// On libere la mémoire du Vector
 	delete ListArticle;
 }
 void Gestion::sauvegarderFichier()
