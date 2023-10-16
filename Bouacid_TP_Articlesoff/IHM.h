@@ -1,9 +1,10 @@
 #pragma once
 #include "Article.h"
-#include "Gestion.h"
 #include <vector>
+#include "Gestion.h"
 
 using namespace std;
+
 
 class IHM
 {

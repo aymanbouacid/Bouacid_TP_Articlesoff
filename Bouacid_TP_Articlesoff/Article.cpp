@@ -1,7 +1,10 @@
 #include "Article.h"
 #include <string>
 
+
 using namespace std;
+
+
 
 Article::Article(string n)
 {

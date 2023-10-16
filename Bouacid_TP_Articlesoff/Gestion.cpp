@@ -3,34 +3,35 @@
 
 using namespace std;
 
-Gestion::Gestion()
+Gestion::Gestion() // Constructeur
 {
-	ListArticle = new vector<Article*>();
+	listArticle = new vector<Article*>();
 	lireFichier();
 }
 
-Gestion::~Gestion()
-{
-	sauvegarderFichier();
 
-	while (ListArticle->size() > 0)
+Gestion::~Gestion() // Destructeur
+{
+	sauverFichier();
+	// On libere tous les objets crees
+	while (listArticle->size() > 0)
 	{
-		Article* article = ListArticle->at(ListArticle->size() - 1);
+		Article* article = listArticle->at(listArticle->size() - 1);
 		//
 		delete article;
-		ListArticle->pop_back();
+		listArticle->pop_back();
 	}
 
-	// On libere la mémoire du Vector
-	delete ListArticle;
+	// On libere la memoire du Vector
+	delete listArticle;
 }
-void Gestion::sauvegarderFichier()
+void Gestion::sauverFichier()
 {
 	ofstream sortie = ofstream();
-	sortie.open("../articles.txt");
-	for (int i = 0; i < ListArticle->size(); i++)
+	sortie.open("../article.txt");
+	for (int i = 0; i < listArticle->size(); i++)
 	{
-		Article* article = ListArticle->at(i);
+		Article* article = listArticle->at(i);
 		sortie << article->getNom() << " " << article->prixHT << " " << article->stock << endl;
 	}
 	sortie.close();
@@ -39,25 +40,25 @@ void Gestion::sauvegarderFichier()
 
 int Gestion::getTaille()
 {
-	return (int)ListArticle->size();
+	return (int)listArticle->size();
 }
 
 
 Article* Gestion::Ajouter(string nomArticle)
 {
-	Article* atemp = new Article(nomArticle);
-	ListArticle->push_back(atemp);
-	return atemp;
+	Article* temp = new Article(nomArticle);
+	listArticle->push_back(temp);
+	return temp;
 }
 
 Article* Gestion::LireAt(int pos)
 {
-	Article* atemp = NULL;
+	Article* temp = NULL;
 	if ((pos >= 0) && (pos < getTaille()))
 	{
-		atemp = ListArticle->at(pos);
+		temp = listArticle->at(pos);
 	}
-	return atemp;
+	return temp;
 }
 
 
@@ -82,7 +83,7 @@ void Gestion::lireFichier()
 			}
 			entree >> article->prixHT;
 			entree >> article->stock;
-			ListArticle->push_back(article);
+			listArticle->push_back(article);
 		} while (!entree.eof());
 		entree.close();
 	}
@@ -93,12 +94,10 @@ bool Gestion::Supprimer(int pos)
 	bool ok = false;
 	if ((pos >= 0) && (pos < getTaille()))
 	{
-		Article* article = ListArticle->at(ListArticle->size() - 1);
+		Article* article = listArticle->at(listArticle->size() - 1);
 		delete article;
-		ListArticle->pop_back();
+		listArticle->pop_back();
 		ok = true;
 	}
 	return ok;
 }
-
-

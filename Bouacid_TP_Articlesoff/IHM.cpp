@@ -1,8 +1,12 @@
-#include <iostream>
 #include "IHM.h"
+#include <iostream>
 #include "Gestion.h"
 
 using namespace std;
+
+
+
+
 
 IHM::IHM()
 {
@@ -14,33 +18,32 @@ IHM::~IHM()
 
 }
 
+
 void IHM::Start(Gestion* g)
 {
 	this->gestion = g;
 	int choix;
 	int numArticle;
 	string nomArticle;
-	Article* atemp;
-
+	Article* temp;
 	do
 	{
 		choix = AfficheMenu();
 
 		switch (choix)
 		{
-		case1:
-			cout << "Article : ";
+		case 1:
+			cout << "Entrez le nom de votre article :" << endl;
 			cin >> nomArticle;
-			atemp = gestion->Ajouter(nomArticle);
-			Modifier(atemp);
+			temp = gestion->Ajouter(nomArticle);
+			Modifier(temp);
 			break;
-		case2:
+		case 2:
 			numArticle = this->ChoixArticle();
-
 			if (numArticle > 0)
 			{
-				atemp = gestion->LireAt(numArticle - 1);
-				Modifier(atemp);
+				temp = gestion->LireAt(numArticle - 1);
+				Modifier(temp);
 			}
 			break;
 		case 3:
@@ -54,8 +57,8 @@ void IHM::Start(Gestion* g)
 			numArticle = this->ChoixArticle();
 			if (numArticle > 0)
 			{
-				atemp = gestion->LireAt(numArticle - 1);
-				Afficher(atemp);
+				temp = gestion->LireAt(numArticle - 1);
+				Afficher(temp);
 			}
 			break;
 		case 5:
@@ -87,7 +90,7 @@ int IHM::AfficheMenu()
 }
 
 
-
+//
 
 int IHM::ChoixArticle()
 {
@@ -131,14 +134,11 @@ void IHM::Afficher(Article* article)
 void IHM::AfficherTout()
 {
 	cout << "     **********  Affichage  ********** " << endl;
-	// On affiche tous les objets crées
+	// On affiche tous les objets crees
 	for (int j = 0; j < gestion->getTaille(); j++)
 	{
 		Article* article = gestion->LireAt(j);
 		cout << article->getNom() << " - " << article->prixHT << " €" << " - " << article->stock << endl;
 	}
 }
-			
-		
-
 

@@ -7,9 +7,9 @@ using namespace std;
 class Gestion
 {
 
-	vector<Article*>* ListArticle;
+	vector<Article*>* listArticle;
 	void lireFichier();
-	void sauvegarderFichier();
+	void sauverFichier();
 
 public:
 	Gestion();
