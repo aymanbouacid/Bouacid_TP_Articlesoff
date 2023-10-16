@@ -28,7 +28,7 @@ Gestion::~Gestion() // Destructeur
 void Gestion::sauverFichier()
 {
 	ofstream sortie = ofstream();
-	sortie.open("../article.txt");
+	sortie.open("../Bouacid_TP_Articlesoff/article.txt");
 	for (int i = 0; i < listArticle->size(); i++)
 	{
 		Article* article = listArticle->at(i);
@@ -65,7 +65,7 @@ Article* Gestion::LireAt(int pos)
 void Gestion::lireFichier()
 {
 	ifstream entree = ifstream();
-	entree.open("../article.txt");
+	entree.open("../Bouacid_TP_Articlesoff/article.txt");
 	if (!entree.fail())
 	{
 		Article* article;
