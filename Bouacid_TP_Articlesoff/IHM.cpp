@@ -55,7 +55,7 @@ void IHM::Start(Gestion* g)
 			if (numArticle > 0)
 			{
 				atemp = gestion->LireAt(numArticle - 1);
-				Afficher(temp);
+				Afficher(atemp);
 			}
 			break;
 		case 5:
