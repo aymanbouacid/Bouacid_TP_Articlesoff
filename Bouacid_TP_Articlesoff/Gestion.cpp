@@ -91,15 +91,6 @@ void Gestion::lireFichier()
 
 bool Gestion::Supprimer(int pos)
 {
-	/*bool ok = false;
-	if ((pos >= 0) && (pos < getTaille()))
-	{
-		Article* article = listArticle->at(listArticle->size() - 1);
-		delete article;
-		listArticle->pop_back();
-		ok = true;
-	}
-	return ok;*/
 	bool ok = false;
 	if ((pos >= 0) && (pos < getTaille()))
 	{
@@ -108,7 +99,4 @@ bool Gestion::Supprimer(int pos)
 		ok = true;
 	}
 	return ok;
-	
-	
-	
 }
