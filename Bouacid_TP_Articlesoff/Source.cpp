@@ -1,4 +1,7 @@
 #include <iostream>
+#include "Article.h"
+#include "IHM.h"
+#include <vector>
 
 using namespace std;
 
