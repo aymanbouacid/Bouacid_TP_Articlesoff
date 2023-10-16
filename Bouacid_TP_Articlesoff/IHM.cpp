@@ -98,7 +98,6 @@ int IHM::ChoixArticle()
 	if (gestion->getTaille() > 0)
 	{
 		cout << "Quel Article ? (1/" << gestion->getTaille() << ") :"<<endl;
-		cout << gestion->;
 		cin >> numArticle;
 		if (!((numArticle >= 1) && (numArticle <= gestion->getTaille())))
 		{
