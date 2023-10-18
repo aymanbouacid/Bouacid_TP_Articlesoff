@@ -10,7 +10,7 @@ class IHM
 {
 
 	Gestion* gestion = NULL;
-
+	vector<Article*>* achatdArticle;
 public:
 
 	IHM();
@@ -23,5 +23,7 @@ private:
 	void Modifier(Article*);
 	void Afficher(Article*);
 	void AfficherTout();
+	void ModifierStock(Article* article, int nombreArticle);
+	void AfficherTicket();
 
 };
