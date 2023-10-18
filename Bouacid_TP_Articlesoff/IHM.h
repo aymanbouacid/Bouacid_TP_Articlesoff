@@ -10,12 +10,12 @@ class IHM
 {
 
 	Gestion* gestion = NULL;
-	vector<Article*>* achatdArticle;
+	
 public:
 
 	IHM();
 	~IHM();
-
+	vector<Article*>* achatdArticle;
 	void Start(Gestion* gestion);
 private:
 	int AfficheMenu();
@@ -25,5 +25,6 @@ private:
 	void AfficherTout();
 	void ModifierStock(Article* article, int nombreArticle);
 	void AfficherTicket();
+	void AfficherHorsStock();
 
 };

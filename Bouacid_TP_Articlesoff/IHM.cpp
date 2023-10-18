@@ -1,5 +1,6 @@
 #include "IHM.h"
 #include <iostream>
+#include <iomanip>
 #include "Gestion.h"
 
 
@@ -12,7 +13,7 @@ using namespace std;
 
 IHM::IHM()
 {
-
+	achatdArticle = new vector<Article*>;
 }
 
 IHM::~IHM()
@@ -68,6 +69,9 @@ void IHM::Start(Gestion* g)
 			AfficherTout();
 			break;
 		case 6:
+			AfficherHorsStock();
+			break;
+		case 7:
 			int nombreArticle;
 			while (index != 0)
 			{
@@ -98,6 +102,7 @@ void IHM::Start(Gestion* g)
 			break;
 		}
 	} while (choix != 0);
+
 }
 
 
@@ -109,8 +114,9 @@ int IHM::AfficheMenu()
 	cout << "2 : Modifier un Article" << endl;
 	cout << "3 : Supprimer un Article" << endl;
 	cout << "4 : Afficher un Article" << endl;
-	cout << "5 : Afficher les Articles hors stock" << endl;
-	cout << "6 : Acheter des Articles" << endl;
+	cout << "5 : Afficher les Articles en stock" << endl;
+	cout << "6 : Afficher les Articles hors stock" << endl;
+	cout << "7 : Acheter des Articles" << endl;
 	cout << "0 : Quitter" << endl;
 	cout << "Entrez un choix" << endl;
 	cout << "Choix :";
@@ -167,7 +173,7 @@ void IHM::AfficherTout()
 	for (int j = 0; j < gestion->getTaille(); j++)
 	{
 		Article* article = gestion->LireAt(j);
-		cout << article->getNom() << " - " << article->prixHT << " €" << " - " << article->stock << endl;
+		cout << j + 1 << " " << article->getNom() << " - " << article->prixHT << " €" << " - " << article->stock << endl;
 	}
 }
 
@@ -179,18 +185,35 @@ void IHM::ModifierStock(Article* article, int nombreArticle)
 void IHM::AfficherTicket()
 {
 	cout << "********** Ticket **********" << endl;
-	cout << left << "Nom" << right << "PrixHT" << right << "Stock" << endl;
+	cout  << setw(15) << left << "Nom" << setw(15) << right << "PrixHT" << setw(15) << right << "Stock" << endl;
 	double totalHT = 0;
 	double totalTTC;
 
 	for (int i = 0; i < this->achatdArticle->size(); i++)
 	{
-		cout << i + 1 << " " << left << achatdArticle->at(i)->getNom() << right << achatdArticle->at(i)->prixHT << right << achatdArticle->at(i)->stock << endl;
+		cout << i + 1 << " " << setw(15) << left << achatdArticle->at(i)->getNom() << setw(15) << right << achatdArticle->at(i)->prixHT << setw(15) << right << achatdArticle->at(i)->stock << endl;
 		totalHT = totalHT + ((achatdArticle->at(i)->prixHT) * achatdArticle->at(i)->stock);
 	}
 	totalTTC = totalHT + (0.2 * totalHT);// 0.2 = 20%
 	cout << "TotalHT :" << totalHT << endl;
 	cout << "TotalTTC :" << totalTTC << endl;
+}
+
+void  IHM::AfficherHorsStock()
+{
+	cout << "     **********  Affichage  ********** " << endl;
+	// On affiche tous les objets crees
+	
+	for (int j = 0; j < gestion->getTaille(); j++)
+	{
+		Article* article = gestion->LireAt(j);
+		if (article->stock == 0)
+		{
+			cout << j + 1 << " " << article->getNom() << " - " << article->prixHT << " €" << " - " << article->stock << endl;
+		}
+		
+		
+	}
 }
 
 
